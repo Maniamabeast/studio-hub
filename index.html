@@ -1,116 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Studio Hub | Books & Anime</title>
-  <!-- Tailwind CSS for sleek styling -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      background-color: #0a0a0a;
-      color: #e5e5e5;
-      font-family: 'Inter', system-ui, sans-serif;
-    }
-    .glow-effect {
-      box-shadow: 0 0 25px rgba(239, 68, 68, 0.15);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The OC | The Omni Cosmogony</title>
+    <style>
+        :root {
+            --bg-color: #08080a;
+            --card-bg: #121218;
+            --accent-red: #8b0000;
+            --accent-glow: rgba(139, 0, 0, 0.4);
+            --text-main: #e0e0e0;
+            --text-muted: #888890;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Navigation Header */
+        header {
+            background-color: rgba(10, 10, 14, 0.95);
+            border-bottom: 1px solid #222;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .brand-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .brand-logo span {
+            color: var(--accent-red);
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Main Content Container */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .hero-section p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Grid Layout for Sections */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 6px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-red);
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-badge {
+            display: inline-block;
+            background: rgba(139, 0, 0, 0.2);
+            color: #ff4d4d;
+            border: 1px solid var(--accent-red);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #1a1a20;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body>
 
-  <!-- Navigation Bar -->
-  <nav class="border-b border-neutral-800 bg-neutral-950/80 backdrop-blur sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-black tracking-wider text-red-600 uppercase">STUDIO HUB</h1>
-      <div class="space-x-6 text-sm font-medium">
-        <a href="#books" class="hover:text-red-500 transition">Books</a>
-        <a href="#videos" class="hover:text-red-500 transition">Anime Clips</a>
-        <a href="#lore" class="hover:text-red-500 transition">Lore Bible</a>
-      </div>
-    </div>
-  </nav>
+    <!-- Header / Navigation -->
+    <header>
+        <div class="brand-logo">The OC <span>// Omni Cosmogony</span></div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#stories">Original Stories</a></li>
+                <li><a href="#teasers">Anime Teasers</a></li>
+                <li><a href="#lore">Order &amp; Chaos</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Hero Section -->
-  <header class="max-w-5xl mx-auto px-6 py-20 text-center">
-    <span class="text-xs uppercase tracking-widest font-semibold text-red-500 bg-red-950/50 px-3 py-1 rounded-full border border-red-800">Official Creative Archive</span>
-    <h2 class="text-5xl md:text-7xl font-black tracking-tight mt-6 uppercase">Original Stories & Anime Teasers</h2>
-    <p class="text-neutral-400 mt-4 max-w-2xl mx-auto text-lg">Step into the universe. Dark atmospheric narratives, heavy visual lore, and exclusive action clips.</p>
-    <div class="mt-8 flex justify-center gap-4">
-      <a href="#books" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-lg transition glow-effect">Read Stories</a>
-      <a href="#videos" class="bg-neutral-800 hover:bg-neutral-700 text-white font-bold px-6 py-3 rounded-lg transition">Watch Clips</a>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="max-w-6xl mx-auto px-6 space-y-24 mb-20">
-
-    <!-- Books Vault -->
-    <section id="books">
-      <h3 class="text-2xl font-extrabold uppercase border-l-4 border-red-600 pl-4 mb-8">The Book Vault</h3>
-      <div class="grid md:grid-cols-2 gap-8">
-        
-        <!-- Book Card 1 -->
-        <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-6 hover:border-red-900 transition">
-          <div class="h-48 bg-neutral-800 rounded-lg flex items-center justify-center mb-4 text-neutral-500 font-bold uppercase tracking-wider">
-            Cover Art Preview
-          </div>
-          <h4 class="text-xl font-bold">Go Ape</h4>
-          <p class="text-neutral-400 text-sm mt-2">High-octane action and raw energy. Follow the journey through intensive battles and heavy grit.</p>
-          <div class="mt-4 flex justify-between items-center">
-            <span class="text-xs text-red-400 font-semibold uppercase">Active Series</span>
-            <button class="bg-neutral-800 hover:bg-neutral-700 text-xs px-4 py-2 rounded-md font-semibold">Explore Lore</button>
-          </div>
+    <!-- Main Section -->
+    <main>
+        <div class="hero-section">
+            <h1>THE OMNI COSMOGONY</h1>
+            <p>Welcome to the core archive of the universe. Life, death, reality, time, and the eternal clash between order and chaos live right here.</p>
         </div>
 
-        <!-- Book Card 2 -->
-        <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-6 hover:border-red-900 transition">
-          <div class="h-48 bg-neutral-800 rounded-lg flex items-center justify-center mb-4 text-neutral-500 font-bold uppercase tracking-wider">
-            Cover Art Preview
-          </div>
-          <h4 class="text-xl font-bold">Dark Angel</h4>
-          <p class="text-neutral-400 text-sm mt-2">Atmospheric suspense and deep character lore. A dark, methodical story built with patience and detail.</p>
-          <div class="mt-4 flex justify-between items-center">
-            <span class="text-xs text-red-400 font-semibold uppercase">Active Series</span>
-            <button class="bg-neutral-800 hover:bg-neutral-700 text-xs px-4 py-2 rounded-md font-semibold">Explore Lore</button>
-          </div>
+        <div class="grid-container">
+            <!-- Original Stories Card -->
+            <div class="card" id="stories">
+                <span class="card-badge">Expanded Lore</span>
+                <h3>Original Stories</h3>
+                <p>Explore the multi-chapter sagas spanning from the street-level grit of Go Ape and Killer Instinct to the celestial war of Dark Angel.</p>
+            </div>
+
+            <!-- Anime Teasers Card -->
+            <div class="card" id="teasers">
+                <span class="card-badge">Visual Concept</span>
+                <h3>Anime Teasers</h3>
+                <p>High-contrast visual breakdowns, transformation tiers, and motion aesthetics built for the ultimate animation adaptation.</p>
+            </div>
+
+            <!-- Order & Chaos Card -->
+            <div class="card" id="lore">
+                <span class="card-badge">Core Concept</span>
+                <h3>Order &amp; Chaos</h3>
+                <p>The universal baseline. Track the divine pantheons, planetary authorities, and the rising threat of the God killers.</p>
+            </div>
         </div>
+    </main>
 
-      </div>
-    </section>
-
-    <!-- Anime Video Clips Section -->
-    <section id="videos">
-      <h3 class="text-2xl font-extrabold uppercase border-l-4 border-red-600 pl-4 mb-8">Anime & Video Clips</h3>
-      <div class="grid md:grid-cols-2 gap-8">
-        
-        <!-- Video Card 1 -->
-        <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-4">
-          <div class="aspect-video bg-neutral-950 rounded-lg flex items-center justify-center text-neutral-600 font-medium">
-            [ Video / Teaser Embed ]
-          </div>
-          <h4 class="font-bold mt-4">Official Concept Trailer</h4>
-          <p class="text-xs text-neutral-400 mt-1">High-impact animation clip showcasing key character style.</p>
-        </div>
-
-        <!-- Video Card 2 -->
-        <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-4">
-          <div class="aspect-video bg-neutral-950 rounded-lg flex items-center justify-center text-neutral-600 font-medium">
-            [ Video / Teaser Embed ]
-          </div>
-          <h4 class="font-bold mt-4">Action Teaser Reel</h4>
-          <p class="text-xs text-neutral-400 mt-1">Key moments and animation highlights.</p>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-neutral-900 py-8 text-center text-xs text-neutral-500">
-    <p>&copy; 2026 Studio Hub. All Rights Reserved.</p>
-  </footer>
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 The Omni Cosmogony (The OC). All Rights Reserved.
+    </footer>
 
 </body>
 </html>
+

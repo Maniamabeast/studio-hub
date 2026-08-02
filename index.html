@@ -134,7 +134,46 @@
             line-height: 1.5;
         }
 
-        /* New Sections for Chapters & Character Dossiers */
+        /* Soundtrack & Audio Vibe Section */
+        .soundtrack-box {
+            background: rgba(10, 10, 18, 0.8);
+            border: 1px solid rgba(139, 0, 0, 0.4);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .soundtrack-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .soundtrack-header h3 {
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .tag {
+            background: rgba(139, 0, 0, 0.3);
+            border: 1px solid rgba(139, 0, 0, 0.6);
+            color: #ff8080;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        audio {
+            width: 100%;
+            filter: invert(90%) hue-rotate(180deg);
+        }
+
+        /* Hub Sections */
         .hub-section {
             margin-top: 3rem;
             border-top: 1px solid var(--border-color);
@@ -236,6 +275,20 @@
                     <h3>The Outer Domain</h3>
                     <p>High-tech Watchers and celestial enforcers maintaining the macro-cosmic order from the edge of space.</p>
                 </div>
+            </div>
+
+            <!-- Chopped and Screwed Audio Vibe Player -->
+            <div class="soundtrack-box">
+                <div class="soundtrack-header">
+                    <h3>Atmospheric Audio Feed</h3>
+                    <span class="tag">Chopped & Screwed Vibe</span>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Immerse yourself in heavy bass textures and slowed-down audio atmosphere while you explore the archives.</p>
+                <!-- Replace audio-file.mp3 with your actual uploaded audio link or file path -->
+                <audio controls>
+                    <source src="images/audio-file.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
 
             <!-- Chapter Reader Portal Section -->
